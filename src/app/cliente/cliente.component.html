@@ -1,0 +1,57 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">Clientes</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado clientes</h5>
+        <div class="my-2">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">Crear cliente</button>
+        </div>
+        <div *ngIf="clientex?.length == 0" class="alert alert-info">
+
+        </div>
+        <table class="table table-bordered table-striped" *ngIf="clientex?.length>0">
+            <thead>
+                <tr>
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        nombre
+                    </th>
+                    <th>
+                        apellido
+                    </th>
+                    <th>
+                       email
+                    </th>
+                    <th>
+                        Fecha creación
+                    </th>
+                    <th>
+                        Editar
+                    </th>
+                    <th>
+                        Borrar
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr *ngFor="let cliente of clientex ">
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.apellido | uppercase}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                  <td>
+                        <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary btn-sm">editar</button>
+                    </td>
+                    <td>
+                        <button type="button" name="eliminar" (click)="delete(cliente)" class="btn btn-danger btn-sm">eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <paginator-nav *ngIf="paginador" [paginador]= "paginador"></paginator-nav>
+    </div>
+    
+
+</div>

@@ -1,0 +1,15 @@
+<button class="btn-dark" (click)="cambiarEstado()">{{title}}</button>
+<div class="card border-primary mb-3" style="max-width: 18rem;" *ngIf="estado">
+    <div class="card-header">Listado</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de Gatos</h5>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let elemento of arreglo">
+                <h4><a target="_blank" rel="noopener" href="https://angular.io/tutorial">{{elemento}}</a></h4>
+            </li>
+
+        </ul>
+    </div>
+
+
+</div>
